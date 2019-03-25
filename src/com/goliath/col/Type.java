@@ -1,0 +1,27 @@
+package com.goliath.col;
+
+public enum Type
+{
+
+	INT,
+	INTEGER,
+	TINYINT,
+	SMALLINT,
+	MEDIUMINT,
+	BIGINT,
+	UNSIGNED_BIG_INT,
+	INT2,
+	INT8,
+	TEXT,
+	CLOB,
+	BLOB,
+	NONE,
+	REAL,
+	DOUBLE,
+	DOUBLE_PRECISION,
+	FLOAT,
+	NUMERIC,
+	BOOLEAN,
+	DATE,
+	DATETIME;
+}
