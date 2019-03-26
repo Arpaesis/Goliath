@@ -129,7 +129,7 @@ public class SQLWrapper
 		String temp = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions))
 		{
-			ps.setString(0, temp);
+			ps.setString(1, temp);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
