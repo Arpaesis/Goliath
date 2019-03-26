@@ -10,7 +10,6 @@ public class Database
 	private final String path;
 
 	private final StringBuilder statementBuilder;
-	private static Statement statement;
 
 	public Database(Connection connection, String path)
 	{
@@ -36,7 +35,7 @@ public class Database
 
 	public void execute()
 	{
-		try(Statement statement = connection.createStatement())
+		try (Statement statement = connection.createStatement())
 		{
 			statement.executeUpdate(statementBuilder.toString());
 			connection.commit();
@@ -53,7 +52,6 @@ public class Database
 	{
 		try
 		{
-			statement.close();
 			connection.close();
 		}
 		catch (Exception e)
