@@ -36,10 +36,10 @@ public class Database
 
 	public void execute()
 	{
-		try
+		try(Statement statement = connection.createStatement())
 		{
-			statement = connection.createStatement();
 			statement.executeUpdate(statementBuilder.toString());
+			connection.commit();
 		}
 		catch (SQLException e)
 		{
@@ -54,7 +54,6 @@ public class Database
 		try
 		{
 			statement.close();
-			connection.commit();
 			connection.close();
 		}
 		catch (Exception e)
