@@ -126,7 +126,7 @@ public class SQLWrapper
 	 */
 	public String fetchString(String tableName, String column, String entryConditions)
 	{
-		String temp = null;
+		String temp = "";
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions))
 		{
 			ps.setString(1, temp);
