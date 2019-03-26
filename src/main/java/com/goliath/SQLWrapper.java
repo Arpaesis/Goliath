@@ -3,6 +3,8 @@ package com.goliath;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.goliath.col.Col;
 import com.goliath.db.Database;
@@ -126,16 +128,16 @@ public class SQLWrapper
 	 */
 	public String fetchString(String tableName, String column, String entryConditions)
 	{
-		String temp = "";
+		String temp = "null";
+		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions))
 		{
-			ps.setString(1, temp);
-			ps.executeUpdate();
+			resultSet = ps.executeQuery();
+			return resultSet.getString(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		this.push();
 		return temp;
 	}
 

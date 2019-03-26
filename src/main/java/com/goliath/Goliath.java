@@ -23,11 +23,9 @@ public class Goliath
 
 				.addColumn(ACCOUNTS, new Col("KEY", Type.REAL))
 
-				.updateEntry(ACCOUNTS, "BALANCE = 69", "ID = 9283712742")
-				
-				.filterToNewTable("New_accts", ACCOUNTS.getName(), "")
-				
-				.removeEntry(ACCOUNTS, "ID = 9283712742");
+				.updateEntry(ACCOUNTS, "BALANCE = 69", "ID = 9283712742");
+		
+		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchString("ACCOUNTS", "BALANCE", "ID = 9283712742"));
 
 		db.flush();
 	}
