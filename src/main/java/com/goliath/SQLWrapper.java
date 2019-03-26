@@ -29,7 +29,6 @@ public class SQLWrapper
 		Connection c = null;
 		try
 		{
-			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:" + path);
 			c.setAutoCommit(false);
 		}
