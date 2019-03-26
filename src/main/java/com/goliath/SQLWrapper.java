@@ -2,6 +2,7 @@ package com.goliath;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import com.goliath.col.Col;
 import com.goliath.db.Database;
@@ -114,6 +115,27 @@ public class SQLWrapper
 
 		db.getStatementBuilder().append("VALUES(" + changes + ");");
 		return this.push();
+	}
+	
+	/**
+	 * 
+	 * @param tableName
+	 * @param column
+	 * @param entryConditions
+	 * @return
+	 */
+	public String fetchString(String tableName, String column, String entryConditions)
+	{
+		String temp = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions))
+		{
+			ps.setString(1, temp);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		this.push();
+		return temp;
 	}
 
 	/**
