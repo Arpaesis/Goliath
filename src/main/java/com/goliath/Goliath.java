@@ -27,7 +27,7 @@ public class Goliath
 				.updateEntry(ACCOUNTS, "BALANCE = 69", "ID = 9283712742");
 		
 		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchString("ACCOUNTS", "BALANCE", "ID = 9283712742"));
-		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchMax("ACCOUNTS", "BALANCE"));
+		System.out.println(SQLWrapper.getInstance().forDatabase(db).max("ACCOUNTS", "BALANCE"));
 
 		db.flush();
 	}

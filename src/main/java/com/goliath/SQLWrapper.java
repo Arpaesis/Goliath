@@ -163,7 +163,7 @@ public class SQLWrapper
 		return temp;
 	}
 	
-	public String fetchMin(String tableName, String column)
+	public String min(String tableName, String column)
 	{
 		String temp = "";
 		ResultSet resultSet = null;
@@ -178,11 +178,45 @@ public class SQLWrapper
 		return temp;
 	}
 	
-	public String fetchMax(String tableName, String column)
+	public String max(String tableName, String column)
 	{
 		String temp = "";
 		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT MAX(" + column + ") FROM " + tableName + ";"))
+		{
+			resultSet = ps.executeQuery();
+			return resultSet.getString(1);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	
+
+	
+	public String sum(String tableName, String column)
+	{
+		String temp = "";
+		ResultSet resultSet = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT SUM(" + column + ") FROM " + tableName + ";"))
+		{
+			resultSet = ps.executeQuery();
+			return resultSet.getString(1);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	
+
+	
+	public String average(String tableName, String column)
+	{
+		String temp = "";
+		ResultSet resultSet = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT AVG(" + column + ") FROM " + tableName + ";"))
 		{
 			resultSet = ps.executeQuery();
 			return resultSet.getString(1);
