@@ -176,6 +176,20 @@ public class SQLWrapper
 		System.out.println(db.getStatementBuilder().toString());
 		return this.push();
 	}
+	
+	/**
+	 * 
+	 * @param tableName
+	 * @param changes
+	 * @param specifier
+	 * @return
+	 */
+	public SQLWrapper updateEntry(String tableName, String changes, String specifier)
+	{
+		db.getStatementBuilder().append("UPDATE " + tableName + " SET " + changes + " WHERE " + specifier + ";");
+		System.out.println(db.getStatementBuilder().toString());
+		return this.push();
+	}
 
 	/**
 	 * 
