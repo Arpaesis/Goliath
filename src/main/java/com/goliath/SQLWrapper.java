@@ -163,14 +163,14 @@ public class SQLWrapper
 		return temp;
 	}
 	
-	public String min(String tableName, String column)
+	public double min(String tableName, String column)
 	{
-		String temp = "";
+		double temp = 0;
 		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT MIN(" + column + ") FROM " + tableName + ";"))
 		{
 			resultSet = ps.executeQuery();
-			return resultSet.getString(1);
+			return resultSet.getDouble(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -178,14 +178,14 @@ public class SQLWrapper
 		return temp;
 	}
 	
-	public String max(String tableName, String column)
+	public double max(String tableName, String column)
 	{
-		String temp = "";
+		double temp = 0;
 		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT MAX(" + column + ") FROM " + tableName + ";"))
 		{
 			resultSet = ps.executeQuery();
-			return resultSet.getString(1);
+			return resultSet.getDouble(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -195,14 +195,14 @@ public class SQLWrapper
 	
 
 	
-	public String sum(String tableName, String column)
+	public double sum(String tableName, String column)
 	{
-		String temp = "";
+		double temp = 0;
 		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT SUM(" + column + ") FROM " + tableName + ";"))
 		{
 			resultSet = ps.executeQuery();
-			return resultSet.getString(1);
+			return resultSet.getDouble(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -212,14 +212,14 @@ public class SQLWrapper
 	
 
 	
-	public String average(String tableName, String column)
+	public double average(String tableName, String column)
 	{
-		String temp = "";
+		double temp = 0;
 		ResultSet resultSet = null;
 		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT AVG(" + column + ") FROM " + tableName + ";"))
 		{
 			resultSet = ps.executeQuery();
-			return resultSet.getString(1);
+			return resultSet.getDouble(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
