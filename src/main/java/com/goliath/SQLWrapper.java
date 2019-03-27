@@ -162,6 +162,36 @@ public class SQLWrapper
 		}
 		return temp;
 	}
+	
+	public String fetchMin(String tableName, String column)
+	{
+		String temp = "";
+		ResultSet resultSet = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT MIN(" + column + ") FROM " + tableName + ";"))
+		{
+			resultSet = ps.executeQuery();
+			return resultSet.getString(1);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	
+	public String fetchMax(String tableName, String column)
+	{
+		String temp = "";
+		ResultSet resultSet = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT MAX(" + column + ") FROM " + tableName + ";"))
+		{
+			resultSet = ps.executeQuery();
+			return resultSet.getString(1);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return temp;
+	}
 
 	/**
 	 * 

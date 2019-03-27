@@ -20,12 +20,14 @@ public class Goliath
 		}))
 		
 				.insertOrIgnore(ACCOUNTS, "9283712742, 0")
+				.insertOrIgnore(ACCOUNTS, "92837127412312, 1000")
 
 				.addColumn(ACCOUNTS, new Col("KEY", Type.REAL))
 
 				.updateEntry(ACCOUNTS, "BALANCE = 69", "ID = 9283712742");
 		
 		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchString("ACCOUNTS", "BALANCE", "ID = 9283712742"));
+		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchMax("ACCOUNTS", "BALANCE"));
 
 		db.flush();
 	}
