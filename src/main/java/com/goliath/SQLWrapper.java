@@ -130,10 +130,32 @@ public class SQLWrapper
 	{
 		String temp = "null";
 		ResultSet resultSet = null;
-		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions))
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions + ";"))
 		{
 			resultSet = ps.executeQuery();
 			return resultSet.getString(1);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return temp;
+	}
+	
+	/**
+	 * 
+	 * @param tableName
+	 * @param column
+	 * @param entryConditions
+	 * @return
+	 */
+	public int fetchInt(String tableName, String column, String entryConditions)
+	{
+		int temp = 0;
+		ResultSet resultSet = null;
+		try(PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions + ";"))
+		{
+			resultSet = ps.executeQuery();
+			return resultSet.getInt(1);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
