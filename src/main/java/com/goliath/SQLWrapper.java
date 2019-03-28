@@ -304,6 +304,12 @@ public class SQLWrapper
 		db.getStatementBuilder().append("DELETE FROM " + table.getName() + " WHERE " + conditions + ";");
 		return this.push();
 	}
+	
+	public SQLWrapper removeEntry(String tableName, String conditions)
+	{
+		db.getStatementBuilder().append("DELETE FROM " + tableName + " WHERE " + conditions + ";");
+		return this.push();
+	}
 
 	private SQLWrapper push()
 	{
