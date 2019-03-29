@@ -1,5 +1,7 @@
 package com.goliath;
 
+import java.util.Arrays;
+
 import com.goliath.col.Col;
 import com.goliath.col.Type;
 import com.goliath.db.Database;
@@ -20,14 +22,16 @@ public class Goliath
 		}))
 		
 				.insertOrIgnore(ACCOUNTS, "9283712742, 0")
+				.insertOrIgnore(ACCOUNTS, "92837127422, 0")
+				.insertOrIgnore(ACCOUNTS, "9283712741322, 0")
 				.insertOrIgnore(ACCOUNTS, "92837127412312, 1000")
 
 				.addColumn(ACCOUNTS, new Col("KEY", Type.REAL))
 
-				.updateEntry(ACCOUNTS, "BALANCE = 69", "ID = 9283712742");
+				.updateEntry(ACCOUNTS, "BALANCE = 0", "ID = 9283712742");
 		
-		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchString("ACCOUNTS", "BALANCE", "ID = 9283712742"));
-		System.out.println(SQLWrapper.getInstance().forDatabase(db).max("ACCOUNTS", "BALANCE"));
+
+		System.out.println(SQLWrapper.getInstance().forDatabase(db).fetchStrings("ACCOUNTS", "ID", "BALANCE = 0").toString());
 
 		db.flush();
 	}

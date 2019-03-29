@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.goliath.col.Col;
 import com.goliath.db.Database;
@@ -138,6 +140,26 @@ public class SQLWrapper
 			e.printStackTrace();
 		}
 		return temp;
+	}
+	
+	public List<String> fetchStrings(String tableName, String column, String entryConditions)
+	{
+		List<String> data = new ArrayList<>();
+		ResultSet resultSet = null;
+		try (PreparedStatement ps = db.getConnection().prepareStatement("SELECT " + column + " FROM " + tableName + " WHERE " + entryConditions + ";"))
+		{
+			resultSet = ps.executeQuery();
+
+			while (resultSet.next())
+			{
+				data.add(resultSet.getString(1));
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return data;
 	}
 	
 	/**
